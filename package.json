@@ -1,0 +1,30 @@
+{
+  "name": "junedns-noip",
+  "version": "2.1.0",
+  "author": "Eduardo Ruiz <eruiz@dataclick.es> (https://www.dataclick.es)",
+  "description": "Dataclick Olimpo - JuNeDNS No-IP for Dynamic DNS",
+  "keywords": [
+    "dns", "dns server", "ddns", "dynamic dns"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-packager": "^17.1.2"
+  },
+  "main": "main.js",
+  "homepage": "https://www.junedns.com",
+  "bugs": {
+    "url": "https://github.com/EduardoRuizM/junedns-noip/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EduardoRuizM/junedns-noip.git"
+  },
+  "scripts": {
+    "start": "node_modules\\.bin\\electron .",
+    "build": "npm run build-win && npm run build-linux && npm run build-macos",
+    "build-win": "node_modules\\.bin\\electron-packager . junedns-noip --platform=win32 --arch=x64 --overwrite --icon=favicon.ico --overwrite --out=dist",
+    "build-linux": "node_modules\\.bin\\electron-packager . junedns-noip --platform=linux --arch=x64 --overwrite --icon=favicon.ico --overwrite --out=dist",
+    "build-macos": "node_modules\\.bin\\electron-packager . junedns-noip --platform=darwin --arch=x64 --overwrite --icon=favicon.ico --overwrite --out=dist"
+  }
+}

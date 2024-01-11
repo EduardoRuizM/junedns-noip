@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JuNeDNS No-IP</title>
+<style>
+body {
+	margin: 0;
+	color: #FFF;
+	background: #333;
+}
+body, input, select {
+	font: 1em Verdana;
+}
+input[type=text] {
+	color: #333;
+	padding: 2px 4px;
+	border-radius: 4px;
+	border: #DDD solid 1px;
+	background-image: linear-gradient(to top, #CDE 20%, #FFF 80%);
+	transition: all 0.3s linear;
+}
+input[type=checkbox] {
+	accent-color: #FA0;
+}
+input[type=button] {
+	cursor: pointer;
+	color: #FFF;
+	margin: 1px 0;
+	padding: 4px 8px;
+	border: 0;
+	border-radius: 4px;
+	background: #FA0;
+	transition: all .5s;
+}
+input[type=button]:hover:not(:disabled) {
+	filter: brightness(1.3);
+}
+input[type=button]:active:not(:disabled) {
+	top: 1px;
+	position: relative;
+}
+input[type=button]:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+</style>
+</head>
+<body>
+
+<div style="background: #FFF">
+  <a href="https://www.junedns.com"><img src="logo.png" style="width: 150px"></a>
+  <div style="float: right"><select id="sLang" onchange="chgLang(this.value)"></select></div>
+  <div style="background: #FA0">&nbsp;</div>
+</div><br>
+
+<center>
+<span id="tCode">Code</span>
+<input id="scode" type="text" size="20" oninput="bStatus()">
+<input id="bSave" type="button" value="Save" onclick="sendCommand('saveCode'); e('bSave').disabled = true">
+<input id="bSend" type="button" value="Send" onclick="sendCommand('sendCode')" disabled>
+<span id="wt" style="visibility: hidden">&#9989;</span>
+<br><br><input id="task" type="checkbox" onclick="bStatus()" style="width: 1.2em; height: 1.2em"> <label id="tTask" for="task">Create Task/Update at startup</label><br><br>
+
+<div id="taskinf" style="visibility: hidden; font-size: .8em">
+  <div id="pwin32" style="display: none"><span id="tWin">Create task requires Administrator privileges</span></div>
+  <div id="plinux" style="display: none"><b id="tLinux">Create Cron job</b><br>0 */3 * * * root <span id="vpath">/etc/junedns/junedns-noip</span> update</div>
+<div>
+</center>
+
+<script>
+const langs = [
+  {code: 'en-US', default: 'en', name: '🇬🇧 English'},
+  {code: 'es-ES', default: 'es', name: '🇪🇸 Español'},
+  {code: 'fr-FR', default: 'fr', name: '🇫🇷 Français'},
+  {code: 'de-DE', default: 'de', name: '🇩🇪 Deutsch'},
+  {code: 'it-IT', default: 'it', name: '🇮🇹 Italiano'},
+  {code: 'pt-PT', default: 'pt', name: '🇵🇹 Português'},
+  {code: 'zh-CN', default: 'ch', name: '🇨🇳 中文'}
+];
+
+const texts = {
+  'en-US': {Code: 'Code', Save: 'Save', Send: 'Send', Task: 'Create Task/Update at startup', Win: 'Create task requires Administrator privileges', Linux: 'Create Cron job'},
+  'es-ES': {Code: 'Código', Save: 'Guardar', Send: 'Enviar', Task: 'Crear tarea/actualizar al inicio', Win: 'Crear tarea requiere privilegios de Administrador', Linux: 'Crear Cron job'},
+  'fr-FR': {Code: 'Code', Save: 'Sauvegarder', Send: 'Envoyer', Task: 'Création d\'une tâche/mise à jour au démarrage', Win: 'La création d\'une tâche nécessite des privilèges d\'Administrateur', Linux: 'Créer une Cron job'},
+  'de-DE': {Code: 'Code', Save: 'Speichern', Send: 'Senden', Task: 'Aufgabe/Aktualisierung beim Start erstellen', Win: 'Aufgabe erstellen erfordert Administrator-Rechte', Linux: 'Cron job erstellen'},
+  'it-IT': {Code: 'Codice', Save: 'Salva', Send: 'Inviare', Task: 'Crea attività/aggiornamento all\'avvio', Win: 'La creazione dell\'attività richiede i privilegi di Amministratore', Linux: 'Creare un Cron job'},
+  'pt-PT': {Code: 'Código', Save: 'Guardar', Send: 'Enviar', Task: 'Criar tarefa/atualizar no arranque', Win: 'Criar tarefa requer privilégios de Administrador', Linux: 'Criar Cron job'},
+  'zh-CN': {Code: '代码', Save: '保存', Send: '发送', Task: '在启动时创建任务/更新', Win: '创建任务需要管理员权限', Linux: '创建 Cron 作业'}
+};
+
+function e(e) {
+  return document.getElementById(e);
+}
+
+function bStatus() {
+  e('bSave').disabled = false;
+  e('bSend').disabled = e('task').disabled = (e('scode').value.trim() === '');
+  e('taskinf').style.visibility = (e('task').checked) ? '' : 'hidden';
+}
+
+async function sendCommand(c) {
+  e('wt').style.visibility = '';
+  await window.electronAPI[c](e('scode').value, e('task').checked);
+  setTimeout(() => e('wt').style.visibility = 'hidden', 600);
+}
+
+function chgLang(c) {
+  lang = c;
+  for(let l in texts[c]) {
+    if(e(`b${l}`)) e(`b${l}`).value = texts[c][l];
+    if(e(`t${l}`)) e(`t${l}`).innerHTML = texts[c][l];
+  }
+}
+
+langs.forEach(l => e('sLang').add(new Option(l.name, l.code)));
+let lang, c = window.navigator.language, l = langs.findIndex(i => i.code === c);
+if((l === -1) && (l = langs.findIndex(i => i.default === c.substring(0, 2))) === -1)
+  l = 0;
+
+e('sLang').selectedIndex = l;
+chgLang(langs[l].code);
+window.electronAPI.getConfig().then(c => {
+  e('scode').value = c.c;
+  if(e(`p${c.p}`)) e(`p${c.p}`).style.display = '';
+  e('task').checked = c.t;
+  e('vpath').innerHTML = c.d;
+  bStatus();
+});
+</script>
+
+</body>
+</html>

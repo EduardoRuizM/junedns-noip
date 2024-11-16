@@ -1,6 +1,6 @@
 {
   "name": "junedns-noip",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "author": "Eduardo Ruiz <eruiz@dataclick.es> (https://www.dataclick.es)",
   "description": "Dataclick Olimpo - JuNeDNS No-IP for Dynamic DNS",
   "keywords": [
@@ -12,7 +12,7 @@
     "electron-packager": "^17.1.2"
   },
   "main": "main.js",
-  "homepage": "https://www.junedns.com",
+  "homepage": "https://github.com/EduardoRuizM/junedns-noip",
   "bugs": {
     "url": "https://github.com/EduardoRuizM/junedns-noip/issues"
   },

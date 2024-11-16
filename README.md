@@ -1,16 +1,15 @@
 <p align="center">
-  <a href="https://junedns.com"><img src="logo.png" title="JuNeDNS No-IP" width="570" height="300" /></a>
+  <a href="https://github.com/EduardoRuizM/junedns-noip"><img src="logo.png" title="JuNeDNS No-IP" width="570" height="300"></a>
 </p>
 <h1 align="center">
   <a href="https://github.com/EduardoRuizM/junedns-noip">EduardoRuizM/junedns-noip</a>
 </h1>
 <p align="center">
-  Dataclick Olimpo <a href="https://junedns.com">☀️JuNeDNS No-IP</a>
+  Dataclick Olimpo <a href="https://github.com/EduardoRuizM/junedns-noip">☀️JuNeDNS No-IP</a>
   Safe, Lightweight and Full DNS Server ideal for single or hosting servers
-  https://www.junedns.com
 </p>
 
-# [☀️JuNeDNS No-IP](https://junedns.com "JuNeDNS No-IP") (Dynamic DNS)
+# [☀️JuNeDNS No-IP](https://github.com/EduardoRuizM/junedns-noip "JuNeDNS No-IP") (Dynamic DNS)
 ## 🌐 Update dynamic IP to static host for [JuNeDNS Backend](https://github.com/EduardoRuizM/junedns-backend "JuNeDNS Backend")
 
 JuNeDNS is a lightweight DNS server, backend and frontend created in Node.js with a fully functionality and easy installation and use. With templates to easily create domain zones.
@@ -26,7 +25,7 @@ JuNeDNS No-IP is made with [Electron](https://www.electronjs.org "Electron") to 
 # Author
 [Eduardo Ruiz](https://github.com/EduardoRuizM) <<eruiz@dataclick.es>>
 
-# [JuNe](https://just-needed.com "JuNe") / JUst NEeded Philosophy
+# JuNe / JUst NEeded Philosophy
 1. **Source code using less code as possible**
   So you can understand code and find bugs easier.
 2. **Few and optimized lines is better**
@@ -94,10 +93,10 @@ Remember to add *ip4.mydomain.tld* to your domain hosting panel, with access to 
 then you can configure JuNeDNS No-IP to connect to *ip4.mydomain.tld* to update IPv4 dynamic address.
 
 ## 🏳Languages
-Help us to translate JuNeDNS in your language 📩 info@junedns.com
+Help us to translate JuNeDNS in your language 📩 info@dataclick.es
 
 | Code | Short code | Language |
-| :---: | --- |
+| :---: | --- | --- |
 | en-US | en | 🇬🇧 English |
 | es-ES | es | 🇪🇸 Español |
 | fr-FR | fr | 🇫🇷 Français |
@@ -125,24 +124,27 @@ Create a **LaunchAgent** to update on: run at load and every 3 hours.
 `launchctl load -w ~/Library/LaunchAgents/JuNeDNS-NoIP.plist`
 
 # JuNeDNS Server & Backend & No-IP
+
 https://github.com/EduardoRuizM/junedns-server
+
 https://github.com/EduardoRuizM/junedns-backend
+
 https://github.com/EduardoRuizM/junedns-frontend
 
-# [JuNe](https://just-needed.com "JuNe") Development Ecosystem
+# JuNe Development Ecosystem
 Everything you need to develop your project:
 ### Backend
 - [JuNe BackServer](https://github.com/EduardoRuizM/june-backserver "JuNe BackServer") With request routing, tokens, file upload, send Emails, WebSockets, SSE and captcha.
 - [JuNe WebServer](https://github.com/EduardoRuizM/june-webserver "JuNe WebServer") Web server with HMR.
 
 ### Frontend
-- [JuNe PaulaJS](https://paulajs.com "JuNe PaulaJS") Powerful JavaScript framework - [GitHub](https://github.com/EduardoRuizM/june-paulajs "GitHub")
+- [JuNe PaulaJS](https://github.com/EduardoRuizM/june-paulajs "JuNe PaulaJS") Powerful JavaScript framework
 - [JuNe CSS](https://github.com/EduardoRuizM/june-css "JuNe CSS") Full responsive CSS library with icons.
 
 # Trademarks©️
 **Dataclick Olimpo JuNeDNS**
-- [Dataclick.es](https://www.dataclick.es "Dataclick.es") is a software development company since 2016.
+- [Dataclick.es](https://www.dataclick.es "Dataclick.es") is a software development company since 2006.
 - [Olimpo](https://www.dataclick.es/en/technology-behind-olimpo.html "Olimpo") is a whole solution software to manage all domains services such as hosting services and to create Webs in a server.
-- [JuNe](https://just-needed.com "JuNe") / JUst NEeded Philosophy, available software and development solutions.
-- [JuNeDNS](https://junedns.com "JuNeDNS") is a part of Dataclick Olimpo domains management for DNS service, released to Internet community.
-- Feel free to use JuNeDNS acording MIT license respecting the brand and image logotype that you can use.
+- JuNe / JUst NEeded Philosophy, available software and development solutions.
+- [JuNeDNS](https://github.com/EduardoRuizM/junedns-server "JuNeDNS") is a part of Dataclick Olimpo domains management for DNS service, released to Internet community.
+- Feel free to use JuNeDNS according MIT license respecting the brand and image logotype that you can use.
